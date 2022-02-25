@@ -352,11 +352,11 @@ void TaskSendData(void *pvParameters)
         Datasensor["time"] = timestamp;
         JsonArray nestedArray = Datasensor.createNestedArray("sensorDataList");
         Serial.print("Data collect:");
-        Serial.println(sensorData[0] * 100);
+        Serial.println(sensorData[0]);
         for (int i = 0; i < 5; i++) {
           JsonObject nested = nestedArray.createNestedObject();
           nested["code"] = sensors[i];
-          nested["value"] = sensorData[i]*100;
+          nested["value"] = sensorData[i];
           sensorData[i]=0;
         }
         serializeJson(datadoc, message, sizeof(message));
